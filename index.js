@@ -42,7 +42,7 @@
  *
  */
 
- export default WebGL2D = (function(Math, undefined) {
+const WebGL2D = (function(Math, undefined) {
 
     // Vector & Matrix libraries from CubicVR.js
     var M_PI = 3.1415926535897932384626433832795028841968;
@@ -1303,3 +1303,5 @@
 
     return WebGL2D;
   }(Math));
+
+export default WebGL2D;
