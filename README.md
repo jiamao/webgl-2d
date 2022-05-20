@@ -9,7 +9,7 @@ WebGL-2D
 
 Switching your Canvas2D sketch to a WebGL2D is very simple and only requires one additional line of code:
 
-    import WebGL2D from '../index.js';
+    import WebGL2D from '2d-webgl';
 
     var cvs = document.getElementById("myCanvas");
 
