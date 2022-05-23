@@ -1,6 +1,6 @@
 {
-  "name": "2d-webgl",
-  "version": "1.0.2",
+  "name": "webgl-2d-ctx",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
