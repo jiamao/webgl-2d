@@ -1139,7 +1139,7 @@ const WebGL2D = (function(Math, undefined) {
         //如果是逆时针绘制，则角度为负数，并且结束角为2Math.PI-end
         if(anticlockwise) {
           var p2 =  Math.PI * 2;
-          startAngle = p2 - start;
+          startAngle = p2 - startAngle;
           endAngle = p2 - endAngle;
         }
         if(startAngle > endAngle) step = -step;
