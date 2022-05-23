@@ -1131,7 +1131,35 @@ const WebGL2D = (function(Math, undefined) {
         gl.closePath();
       };
   
-      gl.arc = function arc(x, y, radius, startAngle, endAngle, anticlockwise) {};
+      gl.arc = function arc(x, y, radius, startAngle, endAngle, anticlockwise) {
+        
+        this.beginPath();
+        var step = 1 / radius;
+
+        //如果是逆时针绘制，则角度为负数，并且结束角为2Math.PI-end
+        if(anticlockwise) {
+          var p2 =  Math.PI * 2;
+          startAngle = p2 - start;
+          endAngle = p2 - endAngle;
+        }
+        if(startAngle > endAngle) step = -step;
+        
+        //椭圆方程x=a*cos(r) ,y=b*sin(r)	
+        for(var r=startAngle;;r += step) {	
+          if(step > 0 && r > endAngle) r = endAngle;
+          else if(step < 0 && r < endAngle) r = endAngle;
+
+          var cx = Math.cos(r) * radius + x;
+          var cy = Math.sin(r) * radius + y;
+          
+          gl.lineTo(cx, cy);
+
+          if(r == endAngle) break;
+        }
+        this.closePath();
+        this.strokeStyle && this.stroke();
+        this.fillStyle && this.fill();
+      };
   
       function fillSubPath(index) {
         var transform = gl2d.transform;
