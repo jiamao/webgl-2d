@@ -1157,8 +1157,8 @@ const WebGL2D = (function(Math, undefined) {
           if(r == endAngle) break;
         }
         this.closePath();
-        this.strokeStyle && this.stroke();
-        this.fillStyle && this.fill();
+        //this.strokeStyle && this.stroke();
+        //this.fillStyle && this.fill();
       };
   
       function fillSubPath(index) {

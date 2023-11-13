@@ -22,16 +22,35 @@
         ctx2D = cvs2D.getContext("2d");
         ctxGL = cvsGL.getContext("webgl-2d");
 
-        draw(ctx2D);
-        draw(ctxGL);
+        const fun = ()=>{
+          draw(ctxGL, width, height);
+          draw(ctx2D, width, height);
+          window.requestAnimationFrame(fun);
+        }
+        window.requestAnimationFrame(fun);
+       
       }
 
-      function draw(ctx) {
+      function draw(ctx, width, height) {
         ctx.fillStyle = "rgb(0, 0, 0)";
-        ctx.fillRect(0, 0, width, height);
-        ctx.fillStyle = "rgb(255, 200, 255)";
+        ctx.clearRect(0,0,width,height);
+        //ctx.fillRect(0, 0, width, height);
 
-        ctx.strokeStyle = "rgba(50, 255, 255, 0.5)";
+        for(var i=0;i<10;i++) {
+
+          ctx.fillStyle = "rgb(255, 200, 255)";
+
+          ctx.strokeStyle = "rgba(50, 255, 255, 0.5)";
+
+          var x = 20 + 300 * Math.random();
+          var y = 20 + 300 * Math.random();
+
+          ctx.arc(x,y,20,0,2*Math.PI,false);
+          ctx.stroke();
+          ctx.fill();
+        }
+
+        
         
         /*ctx.beginPath();
         ctx.lineTo(100, 100);
@@ -62,7 +81,7 @@
         ctx.rect(0, 0, 140, 100);
         ctx.stroke();*/
 
-        ctx.arc(50,50,20,0,2*Math.PI,false);
+        
       }
     </script>
 
